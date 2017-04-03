@@ -8,11 +8,13 @@
 
 import UIKit
 
+// The data source for the cell.
 protocol SwitchWithTextCellDataSource {
     var title: String { get }
     var switchOn: Bool { get }
 }
 
+// The delegate for the cell.
 protocol SwitchWithTextCellDelegate {
     func onSwitchTogleOn(_ on: Bool)
     
@@ -21,6 +23,8 @@ protocol SwitchWithTextCellDelegate {
     var font: UIFont { get }
 }
 
+// A protocol extension allows us to set defaults for a protocol.
+// These are the immediate implementations of a method or property.
 extension SwitchWithTextCellDelegate {
     
     var switchColor: UIColor {
@@ -62,35 +66,3 @@ class SwitchWithTextTableViewCell: UITableViewCell {
         delegate?.onSwitchTogleOn(sender.isOn)
     }
 }
-
-// BEFORE 
-//class SwitchWithTextTableViewCell: UITableViewCell {
-//    
-//    @IBOutlet private weak var label: UILabel!
-//    @IBOutlet private weak var switchToggle: UISwitch!
-//    
-//    typealias onSwitchToggleHandlerType = (switchOn: Bool) -> Void
-//    private var onSwitchToggleHandler: onSwitchToggleHandlerType?
-//    
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//    }
-//    
-//    func configure(withTitle title: String,
-//        switchOn: Bool,
-//        switchColor: UIColor = .purpleColor(),
-//        onSwitchToggleHandler: onSwitchToggleHandlerType? = nil)
-//    {
-//        label.text = title
-//        switchToggle.on = switchOn
-//        // color option added!
-//        switchToggle.onTintColor = switchColor
-//        
-//        self.onSwitchToggleHandler = onSwitchToggleHandler
-//    }
-//    
-//    @IBAction func onSwitchToggle(sender: UISwitch) {
-//        onSwitchToggleHandler?(switchOn: sender.on)
-//    }
-//}
-

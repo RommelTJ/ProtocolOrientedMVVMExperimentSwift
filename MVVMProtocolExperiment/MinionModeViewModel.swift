@@ -22,7 +22,8 @@ extension MinionModeViewModel: SwitchWithTextCellDelegate {
             print("The Minions went out to play!")
         }
     }
-    
+	
+	// Here we are overriding the default implementation of the SwitchWithTextCellDelegate
     var switchColor: UIColor {
         return .yellow
     }
